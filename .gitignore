@@ -79,3 +79,4 @@ fabric.properties
 /credentials.json
 /mods/cases/
 /mods/users/
+/mods/current_case.txt

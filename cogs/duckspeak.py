@@ -26,14 +26,17 @@ class DuckSpeak:
 
         if lang not in self.supported:
             await self.bot.say("Sorry, I do not speak {}.".format(self.languages[lang.lower()]))
+            return
 
         else:
             try:
                 # Translate English to French and everything else to English
                 text = pydeepl.translate(text, ('EN', 'FR')[lang == 'EN'], lang)
 
+
             except Exception as e:  # Internal error
                 await self.bot.say('Error: {}'.format(e))
+                raise
 
             else:
                 pre = ('Translation from DeepL', 'Traduction de DeepL')[lang == 'EN']  # Basic localization
