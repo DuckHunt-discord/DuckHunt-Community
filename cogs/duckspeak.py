@@ -21,7 +21,8 @@ class DuckSpeak:
         self.languages = languages
 
     @commands.command()
-    async def speak(self, *, text: str):
+    async def speak(self, *text):
+        text = ' '.join([str(x) for x in text])
         lang = detectlanguage.simple_detect(text).upper()
 
         if lang not in self.supported:
