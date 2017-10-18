@@ -32,7 +32,7 @@ for extension in os.listdir("cogs"):
 
 discord_logger = logging.getLogger('discord')
 discord_logger.setLevel(logging.CRITICAL)
-logger = logging.getLogger('selfbot')
+logger = logging.getLogger('cbot')
 logger.setLevel(logging.DEBUG)
 formatter = logging.Formatter('%(asctime)s :: %(levelname)s :: %(message)s')
 # file_handler = RotatingFileHandler('activity.log', 'a', 1000000, 1)

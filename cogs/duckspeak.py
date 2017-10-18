@@ -1,7 +1,7 @@
-from discord.ext import commands
-import requests
-import pydeepl  # pip install pydeepl
 import detectlanguage  # pip install detectlanguage
+import pydeepl  # pip install pydeepl
+import requests
+from discord.ext import commands
 
 
 class DuckSpeak:
@@ -28,14 +28,16 @@ class DuckSpeak:
         if lang not in self.supported:
             await self.bot.say("Sorry, I do not speak {}.".format(self.languages[lang.lower()]))
             return
-
         else:
+            print(f"text={text}, lang={lang}")
             try:
                 # Translate English to French and everything else to English
-                text = pydeepl.translate(text, ('EN', 'FR')[lang == 'EN'], lang)
+                desired_lang = ('EN', 'FR')[lang == 'EN']
+                text = pydeepl.translate(str(text), desired_lang , lang)
 
 
             except Exception as e:  # Internal error
+
                 await self.bot.say('Error: {}'.format(e))
                 raise
 
