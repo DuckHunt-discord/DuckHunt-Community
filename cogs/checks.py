@@ -4,7 +4,7 @@ from discord.ext import commands
 
 
 def get_level(user: discord.user):
-    top_role = user.top_role.name.lower()
+    top_role = user.top_role
 
     if top_role.id == '306076806371344385': # Owner
         return 5
