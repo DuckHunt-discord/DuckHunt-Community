@@ -6,15 +6,15 @@ from discord.ext import commands
 def get_level(user: discord.user):
     top_role = user.top_role.name.lower()
 
-    if "owner" in top_role:
+    if top_role.id == '306076806371344385': # Owner
         return 5
-    elif "admin" in top_role:
+    elif top_role.id == '195261182729256961': # Admin
         return 4
-    elif "moderator" in top_role:
+    elif top_role.id == '285752516589649922': # Moderator
         return 3
-    elif "proficient" in top_role:
+    elif top_role.id == '304949336989630466': # Proficient
         return 2
-    elif "noboat" in top_role:
+    elif top_role.id == '306078530712633346': # NoBoat
         return 0
     else:
         return 1
