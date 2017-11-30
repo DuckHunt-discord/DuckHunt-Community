@@ -246,6 +246,10 @@ class Mods:
         :param reason: Reason given for the ban.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.ban(user, delete_message_days=purge)
         case = await self.add_action(user=user, action="Ban", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
@@ -261,6 +265,10 @@ class Mods:
         :param reason: Reason given for the ban.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.kick(user)
 
         def is_user(u):
@@ -282,7 +290,7 @@ class Mods:
         :param user_str: The user you would like to ban. Can be a userID or a username#discrim combo
         :param reason: Reason given for the unban.
         :return case_numer: Return the case and the case number.
-        """
+        """        
         bans = await self.bot.get_bans(ctx.message.server)
         user = discord.utils.find(lambda m: (str(m.id) == str(user_str)) or (str(m.name + "#" + m.discriminator) == str(user_str)), bans)
         if user:
@@ -303,6 +311,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         case = await self.add_action(user=user, action="Warn", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
         await self.bot.send_message(ctx.message.channel, embed=embed)
@@ -318,6 +330,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         case = await self.add_action(user=user, action="Note", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
         await self.bot.send_message(ctx.message.channel, embed=embed)
@@ -331,6 +347,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.server_voice_state(user, mute=True)
         case = await self.add_action(user=user, action="Mute", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
@@ -345,6 +365,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.server_voice_state(user, mute=False)
         case = await self.add_action(user=user, action="Unmute", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
@@ -359,6 +383,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.server_voice_state(user, deafen=True)
         case = await self.add_action(user=user, action="Deafen", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
@@ -373,6 +401,10 @@ class Mods:
         :param reason: Reason given for the warn.
         :return case_numer: Return the case and the case number.
         """
+        
+        if checks.get_level(ctx.message.author) <= checks.get_level(user):
+            return
+        
         await self.bot.server_voice_state(user, deafen=False)
         case = await self.add_action(user=user, action="Undeafen", by=ctx.message.author, reason=reason)
         embed = await self.get_case_embed(case)
